@@ -25,8 +25,11 @@ def flood_fill(input_board: List[str], old: str, new: str, x: int, y: int) -> Li
         List[str]: Modified board
     """
 
+    # Check if x or y coordinate is out of bounds
     if len(input_board) < x or len(input_board[x]) < y:
         return input_board
+
+    # Check if the current position has the old character and replace with the new character
     elif input_board[x][y] == old:
         if y == 0:
             input_board[x] = new + input_board[x][y + 1:]
@@ -35,6 +38,7 @@ def flood_fill(input_board: List[str], old: str, new: str, x: int, y: int) -> Li
         else:
             input_board[x] = input_board[x][:y] + new + input_board[x][y + 1:]
 
+        # Check the current position's surroundings (up, down, right, and left) using recursion
         flood_fill(input_board=input_board, old=old, new=new, x=x + 1, y=y)
         flood_fill(input_board=input_board, old=old, new=new, x=x - 1, y=y)
         flood_fill(input_board=input_board, old=old, new=new, x=x, y=y + 1)
