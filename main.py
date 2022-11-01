@@ -1,5 +1,7 @@
+# Importing List type from typing Python package.
 from typing import List
 
+# Create a sample board to test our function on.
 board = [
     "......................",
     "......##########......",
@@ -11,7 +13,7 @@ board = [
     "....##############....",
 ]
 
-
+# Create the flood_fill function that will edit our board.
 def flood_fill(input_board: List[str], old: str, new: str, x: int, y: int) -> List[str]:
     """Returns board with old values replaced with new values
     through flood filling starting from the coordinates x, y
@@ -44,12 +46,15 @@ def flood_fill(input_board: List[str], old: str, new: str, x: int, y: int) -> Li
         flood_fill(input_board=input_board, old=old, new=new, x=x, y=y + 1)
         flood_fill(input_board=input_board, old=old, new=new, x=x, y=y - 1)
 
+    # Return the input_board at the end of the recursive code.
     return input_board
 
 
 if __name__ == '__main__':
 
+    # Define the modified_board after inputting a sample board in flood_fill
     modified_board = flood_fill(input_board=board, old=".", new="~", x=5, y=12)
 
+    # Print out the modified_board in the Terminal:
     for a in modified_board:
         print(a)
